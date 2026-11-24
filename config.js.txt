@@ -1,0 +1,4 @@
+// Kill Log settings. Paste your Apps Script web app URL (ends in /exec) between the quotes.
+window.KILL_LOG_CONFIG = {
+  apiUrl: "https://script.google.com/macros/s/AKfycbw6Dhu8KxACHhyWz6FHTQ5QOrmlmRR9Bt_CVsMa1Pke7GdDt08EMOy0Fjf1VeZ8uE3E/exec"
+};
