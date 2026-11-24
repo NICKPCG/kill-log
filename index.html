@@ -34,8 +34,8 @@ header h1{font-size:1.8rem;line-height:1;margin:0}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
 .vf{position:relative;height:34vh;min-height:200px;background:#0d120f;border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#c9d3cc;text-align:center}
 .vf video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ret{position:absolute;left:50%;top:50%;width:56%;aspect-ratio:1;max-height:80%;transform:translate(-50%,-50%);border:3px solid rgba(255,255,255,.9);border-radius:14px;transition:border-color .15s}
-.ret.hit{border-color:#7CC593}
+.ret{position:absolute;left:50%;top:50%;width:56%;aspect-ratio:1;max-height:80%;transform:translate(-50%,-50%);border:3px solid rgba(255,255,255,.9);border-radius:14px;box-shadow:0 0 0 200vmax rgba(0,0,0,.28);transition:border-color .2s,box-shadow .2s}
+.ret.hit{border-color:#3FD07A;box-shadow:0 0 0 200vmax rgba(34,170,85,.72);transition:none}
 .vf .idle{position:relative;padding:20px}
 .manual{display:flex;gap:8px;margin-top:10px}
 .manual input{flex:1}
@@ -333,7 +333,7 @@ input,select{width:100%;font:500 1rem Barlow,sans-serif;color:var(--ink);backgro
     tick();
   }
   function stopCam(){ clearTimeout(timer); if(stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; } }
-  function flash(){ $("ret").classList.add("hit"); setTimeout(()=>$("ret").classList.remove("hit"),400); }
+  function flash(){ $("ret").classList.add("hit"); setTimeout(()=>$("ret").classList.remove("hit"),700); }
   let actx=null;
   function beep(){ try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); const o=actx.createOscillator(), g=actx.createGain(); o.frequency.value=1200; g.gain.value=.08; o.connect(g); g.connect(actx.destination); o.start(); o.stop(actx.currentTime+.08); }catch(e){} }
   document.addEventListener("touchend",()=>{ try{ actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==="suspended") actx.resume(); }catch(e){} },{once:true});
